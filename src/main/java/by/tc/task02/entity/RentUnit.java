@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class RentUnit {
     private Map<SportEquipment, Integer> units;
+
     private User user;
 
     public Map<SportEquipment, Integer> getUnits() {

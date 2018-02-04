@@ -1,12 +1,10 @@
 package by.tc.task02.main;
 
 
-import by.tc.task02.entity.Category;
-import by.tc.task02.entity.Shop;
+import by.tc.task02.dao.EquipmentBuilder;
 import by.tc.task02.entity.SportEquipment;
 import by.tc.task02.entity.User;
-import by.tc.task02.service.Finder;
-import by.tc.task02.service.ShopInitializer;
+import by.tc.task02.service.RentItemService;
 
 import java.io.IOException;
 
@@ -14,22 +12,24 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-        ShopInitializer shopInitializer = new ShopInitializer();
-
-        Shop shop =  shopInitializer.initializeShop();
-        System.out.println(shop.getGoods());
-
         User user = new User();
-        user.setId(1);
         user.setName("Roman");
-        Category category = Category.TRAINERS;
+        user.setId(1);
+        User user2 = new User();
+        user2.setId(2);
+        user2.setName("Vova");
+        SportEquipment equipment = EquipmentBuilder.buildEquipment("SHOES", "Man", "30");
+        SportEquipment equipment1 = EquipmentBuilder.buildEquipment("SHOES", "Woman", "30");
+        SportEquipment equipment2 = EquipmentBuilder.buildEquipment("SWIMMING", "Glasses", "20");
+        SportEquipment equipment3 = EquipmentBuilder.buildEquipment("FITNESS", "Mat", "25");
+        RentItemService service = new RentItemService();
+        service.rentEquipment(equipment, user);
+        service.rentEquipment(equipment1, user);
+        service.rentEquipment(equipment2, user2);
+        service.rentEquipment(equipment3, user);
 
-        SportEquipment equipment;
-        equipment = Finder.find(category,"Back",210);
-        System.out.println(equipment.getCategory()+" " + equipment.getPrice());
 
-        //RentItemService service = new RentItemService();
-        //service.grabItem();
+
 
 
 

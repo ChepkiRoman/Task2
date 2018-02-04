@@ -8,5 +8,12 @@
     <artifactId>task2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <reporting>
+        <plugins>
+
+        </plugins>
+    </reporting>
+
+
 
 </project>

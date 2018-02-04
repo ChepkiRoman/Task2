@@ -4,6 +4,6 @@ import java.io.File;
 import java.io.IOException;
 
 public interface FileWorker {
-     File loadFile() ;
+     File loadFile(String nameOfFile) ;
      String getStringFromFile() throws IOException;
 }
