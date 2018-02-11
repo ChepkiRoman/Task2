@@ -1,2 +1,2 @@
-RentUnit{units={SportEquipment{category=SHOES, title='Man', price=30}=1, SportEquipment{category=SHOES, title='Woman', price=30}=1}, user=User{id=1, name='Roman'}}
+RentUnit{units={SportEquipment{category=SHOES, title='Woman', price=30}=1, SportEquipment{category=SHOES, title='Man', price=30}=1}, user=User{id=1, name='Roman'}}
 RentUnit{units={SportEquipment{category=SWIMMING, title='Glasses', price=20}=1}, user=User{id=2, name='Vova'}}
