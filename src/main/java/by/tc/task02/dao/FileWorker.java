@@ -5,5 +5,5 @@ import java.io.IOException;
 
 public interface FileWorker {
      File loadFile(String nameOfFile) ;
-     String getStringFromFile() throws IOException;
+     String getStringFromFile(String nameOfFile) throws IOException;
 }

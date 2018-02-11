@@ -13,13 +13,10 @@ import java.util.Map;
 
 public class RentItemService {
     private static final int MAX_AMOUNT_OF_RENT_ITEMS = 3;
-    Shop shop = new Shop();
-    ShopInitializer shopInitializer = new ShopInitializer();
-    FileWorkerImpl fileWorker = new FileWorkerImpl("shop");
-    Map<SportEquipment, Integer> goods;
+    private Shop shop;
+    private Map<SportEquipment, Integer> goods;
 
-    public RentItemService() throws IOException {
-        shop = shopInitializer.initializeShop();
+    public RentItemService() {
         goods = shop.getGoods();
     }
 
@@ -29,7 +26,7 @@ public class RentItemService {
             Integer amount = goods.get(equipment);
             rent(equipment, user, amount);
         } else {
-            throw new ExceptionInInitializerError("more then three");
+            System.out.println("More then three");
         }
     }
 
@@ -44,6 +41,10 @@ public class RentItemService {
     }
 
     private void rent(SportEquipment equipment, User user, Integer amount) throws IOException {
+        ShopInitializer shopInitializer = new ShopInitializer();
+        shop = shopInitializer.initializeShop();
+        FileWorkerImpl fileWorker = new FileWorkerImpl("shop");
+
         if (amount > 0) {
             goods.put(equipment, amount - 1);
             RentUnit userRentUnit = getRentUnitByUser(user);

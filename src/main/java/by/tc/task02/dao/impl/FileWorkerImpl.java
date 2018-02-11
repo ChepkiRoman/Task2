@@ -8,15 +8,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class FileWorkerImpl implements FileWorker, Closeable {
-    BufferedReader bufferedReader;
-    BufferedWriter bufferedWriter;
-    String line;
-
-
-    public FileWorkerImpl(String nameOfFile) throws IOException {
-        bufferedReader = new BufferedReader(new FileReader(loadFile(nameOfFile)));
-    }
+public class FileWorkerImpl implements FileWorker {
 
     public File loadFile(String nameOfFile) {
         String filePath = ResourceBundle.getBundle("source_name").getString(nameOfFile);
@@ -24,14 +16,19 @@ public class FileWorkerImpl implements FileWorker, Closeable {
         return file;
     }
 
-    public String getStringFromFile() throws IOException {
-        line = bufferedReader.readLine();
-        return line;
+    public String getStringFromFile(String nameOfFile) {
+        String line = "";
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(loadFile(nameOfFile)));) {
+            line = bufferedReader.readLine();
 
+        } catch (IOException e) {
+            System.out.println(e.toString());
+        }
+        return line;
     }
 
     public void writeInFile(String nameOfFile, List<RentUnit> rentUnitsList) throws IOException {
-        bufferedWriter = new BufferedWriter(new FileWriter(loadFile(nameOfFile)));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(loadFile(nameOfFile)));
         for (RentUnit s : rentUnitsList
                 ) {
             bufferedWriter.write(s.toString());
@@ -41,7 +38,4 @@ public class FileWorkerImpl implements FileWorker, Closeable {
     }
 
 
-    public void close() throws IOException {
-        bufferedReader.close();
-    }
 }

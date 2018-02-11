@@ -15,8 +15,9 @@ import java.util.List;
 import java.util.Map;
 
 public class ShopInitializer {
-    private Shop shop = new Shop();
+
     public Shop initializeShop() throws IOException {
+         Shop shop = new Shop();
         FileWorker fileWorker = new FileWorkerImpl("shop");
         Map<SportEquipment, Integer> goods = new HashMap<SportEquipment, Integer>();
         List<RentUnit> rentUnits = new ArrayList<RentUnit>();

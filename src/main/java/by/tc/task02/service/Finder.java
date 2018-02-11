@@ -9,11 +9,9 @@ import by.tc.task02.service.validation.Validator;
 import java.io.IOException;
 
 public class Finder {
-    String[] criterias;
-
 
     public final SportEquipment find(Category category, String title, int price) throws IOException {
-
+        String[] criterias;
         if (Validator.isValid(category, title, price)) {
             SportEquipment equipment = new SportEquipment();
             FileWorkerImpl fileWorker = new FileWorkerImpl("shop");
